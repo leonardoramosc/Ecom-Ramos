@@ -1,0 +1,33 @@
+.brand span{
+  color: #76c893;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0px;
+  background-color: #081c15;
+  color: #fff;
+}
+
+.navbar__categories {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+}
+
+.navbar__categories--item {
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: background-color 200ms ease-in;
+}
+
+.navbar__categories--item:hover {
+  background-color: #76c893;
+}
+
+.navbar__categories--item:not(:last-child) {
+  margin-right: 10px;
+}
