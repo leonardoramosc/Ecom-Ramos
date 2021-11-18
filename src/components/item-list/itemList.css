@@ -1,0 +1,8 @@
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  row-gap: 30px;
+  column-gap: 30px;
+  padding: 50px;
+}

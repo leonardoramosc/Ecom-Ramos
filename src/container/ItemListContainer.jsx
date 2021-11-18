@@ -1,10 +1,22 @@
-const ItemListContainer = ({ greeting }) => {
+import { useEffect } from "react";
+import { useState } from "react";
+import ItemList from "../components/item-list/itemList";
+import getProducts from "../helpers/getProducts.api";
+
+const ItemListContainer = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getProducts().then((data) => {
+      setProducts(data);
+    });
+  }, []);
 
   return (
-    <h1>
-      {greeting}
-    </h1>
+    <div>
+      <ItemList items={products} />
+    </div>
   );
-}
+};
 
 export default ItemListContainer;
