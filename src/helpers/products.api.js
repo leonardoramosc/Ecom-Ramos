@@ -11,4 +11,11 @@ export const getMostSelledProducts = ((top=5) => {
   const topMostSelled = sortProductsBySales(products).filter((_p, index) => index < top);
 
   return mockApiCall(topMostSelled, 2000);
-})();
+});
+
+export const getProductById = ((id) => {
+  const product = products.find(p => p.id === id);
+  console.log(product);
+
+  return mockApiCall(product, 2000);
+});

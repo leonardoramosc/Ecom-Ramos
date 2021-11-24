@@ -7,7 +7,7 @@ const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    getMostSelledProducts(5).then((data) => {
+    getMostSelledProducts(5)().then((data) => {
       setProducts(data);
     });
   }, []);

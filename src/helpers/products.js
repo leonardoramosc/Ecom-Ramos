@@ -8,12 +8,13 @@ const products = [
       "https://http2.mlstatic.com/D_NQ_NP_2X_816387-MLA47500407339_092021-F.webp",
       "https://http2.mlstatic.com/D_NQ_NP_728801-MLA47500351356_092021-O.webp",
     ],
-    stock: 100,
+    stock: 3,
     seller: "Xiaomi",
     description:
       "Fotografía profesional en tu bolsillo Descubrí infinitas posibilidades para tus fotos con las 3 cámaras principales de tu equipo. Poné a prueba tu creatividad y jugá con la iluminación, diferentes planos y efectos para obtener grandes resultados.",
     category: "celulares",
-    sold: 10
+    sold: 10,
+    discountPercentage: 5
   },
   {
     id: 2,
@@ -29,7 +30,8 @@ const products = [
     description:
       "Mayor rendimiento Su memoria RAM de 4 GB permite que tu smartphone funcione de manera fluida y sin demoras al realizar distintas tareas, jugar o navegar.",
     category: "celulares",
-    sold: 15
+    sold: 15,
+    discountPercentage: 0
   },
   {
     id: 3,
@@ -41,7 +43,8 @@ const products = [
     seller: "Microsoft",
     description: `GABINETE KIT\nINCLUYE TECLADO ,MOUSE Y PARLANTES\nMOTHERBOARD H310M\nMICRO: INTEL i7 9700F\nMEMORIA RAM: DDR4 16GB\nDISCO SOLIDO: SSD 480GB\nPLACA DE VIDEO GEFORCE GT210\nADAPTADOR USB WIFI\nHDMI Y DVI\nUSB 3.0 2.0`,
     category: "computación",
-    sold: 20
+    sold: 20,
+    discountPercentage: 0
   },
   {
     id: 4,
@@ -56,7 +59,8 @@ const products = [
     seller: "Acer",
     description: "La mejor pc para tus trabajos de oficina",
     category: "computación",
-    sold: 25
+    sold: 25,
+    discountPercentage: 0
   },
   {
     id: 5,
@@ -68,7 +72,8 @@ const products = [
     seller: "Samsung",
     description: "Con el Smart TV UN50TU7000 vas a acceder a las aplicaciones en las que se encuentran tus contenidos favoritos. Además, podés navegar por Internet, interactuar en redes sociales y divertirte con videojuegos.",
     category: "televisores" ,
-    sold: 12
+    sold: 12,
+    discountPercentage: 0
   },
   {
     id: 6,
@@ -80,7 +85,8 @@ const products = [
     seller: "Noblex",
     description: "Noblex lleva más de 70 años creando bienestar en los hogares argentinos, lo que la convierte en una de las marcas con mayor historia y trayectoria del país. Ofrece una amplia gama de productos comprometidos con la calidad y la innovación tecnológica.\nCon el Smart TV DK43X5100 vas a acceder a las aplicaciones en las que se encuentran tus contenidos favoritos. Además, podés navegar por Internet, interactuar en redes sociales y divertirte con videojuegos.",
     category: "televisores",
-    sold: 18
+    sold: 18,
+    discountPercentage: 0
   },
   {
     id: 7,
@@ -92,7 +98,8 @@ const products = [
     seller: "Nintendo",
     description: "Guardá tus apps, fotos, videos y mucho más en el disco duro, que cuenta con una capacidad de 32 GB.\nPor otro lado, tiene puerto USB y salida HDMI, que permiten conectar accesorios y cargar la batería de tu control mientras jugás.",
     category: "videojuegos",
-    sold: 23
+    sold: 23,
+    discountPercentage: 0
   },
   {
     id: 8,
@@ -104,7 +111,8 @@ const products = [
     seller: "Sony",
     description: "Guardá tus apps, fotos, videos y mucho más en el disco duro, que cuenta con una capacidad de 825 GB.\nAl contar con un procesador de 8 núcleos y uno gráfico, brinda una experiencia dinámica, respuestas ágiles, y transiciones fluidas de imágenes en alta definición.\nPor otro lado, tiene puerto USB y salida HDMI, que permiten conectar accesorios y cargar la batería de tu control mientras jugás.",
     category: "videojuegos",
-    sold: 30
+    sold: 30,
+    discountPercentage: 0
   }
 ];
 
