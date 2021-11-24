@@ -1,8 +1,17 @@
+.item-list-wrapper {
+  padding: 50px;
+}
+
+.item-list-wrapper > h2 {
+  text-align: center;
+  color: #333;
+}
+
 .item-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   row-gap: 30px;
   column-gap: 30px;
-  padding: 50px;
+  padding: 30px 0px;
 }

@@ -1,3 +1,4 @@
+import numeral from "numeral";
 import "./item.css";
 
 const Item = ({ item }) => {
@@ -11,11 +12,8 @@ const Item = ({ item }) => {
       </div>
       <div className="divider"></div>
       <div className="item-details">
-        <div className="detail item-price">$ {item.price}</div>
+        <div className="detail item-price">{numeral(item.price).format('$0,0.00')}</div>
         <div className="detail item-title">{item.title}</div>
-        <div className="detail item-description">
-          {item.description}
-        </div>
       </div>
     </div>
   );

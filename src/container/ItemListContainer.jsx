@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import ItemList from "../components/item-list/itemList";
-import getProducts from "../helpers/getProducts.api";
+import { getMostSelledProducts } from "../helpers/products.api";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    getProducts().then((data) => {
+    getMostSelledProducts(5).then((data) => {
       setProducts(data);
     });
   }, []);
