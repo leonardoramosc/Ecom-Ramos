@@ -2,6 +2,11 @@
   color: #76c893;
 }
 
+.brand-link {
+  text-decoration: none;
+  color: #fff;
+}
+
 .navbar {
   display: flex;
   justify-content: space-around;
@@ -22,9 +27,23 @@
   cursor: pointer;
   border-radius: 30px;
   transition: background-color 200ms ease-in;
+  text-decoration: none;
+}
+
+.navbar__categories--item a{
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: background-color 200ms ease-in;
+  text-decoration: none;
+  color: #fff;
 }
 
 .navbar__categories--item:hover {
+  background-color: #76c893;
+}
+
+.active {
   background-color: #76c893;
 }
 

@@ -42,7 +42,7 @@ const products = [
     stock: 3,
     seller: "Microsoft",
     description: `GABINETE KIT\nINCLUYE TECLADO ,MOUSE Y PARLANTES\nMOTHERBOARD H310M\nMICRO: INTEL i7 9700F\nMEMORIA RAM: DDR4 16GB\nDISCO SOLIDO: SSD 480GB\nPLACA DE VIDEO GEFORCE GT210\nADAPTADOR USB WIFI\nHDMI Y DVI\nUSB 3.0 2.0`,
-    category: "computación",
+    category: "computacion",
     sold: 20,
     discountPercentage: 0
   },
@@ -58,7 +58,7 @@ const products = [
     stock: 12,
     seller: "Acer",
     description: "La mejor pc para tus trabajos de oficina",
-    category: "computación",
+    category: "computacion",
     sold: 25,
     discountPercentage: 0
   },

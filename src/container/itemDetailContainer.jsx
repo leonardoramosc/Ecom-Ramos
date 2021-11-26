@@ -13,14 +13,9 @@ const ItemDetailContainer = () => {
     });
   }, [idProducto]);
 
-  console.log(item);
-
   return (
-    <div style={{padding: '30px 0'}}>
-      {
-        item ? (<ItemDetail item={item} />) : (<h1>Item no encontrado</h1>)
-      }
-      
+    <div style={{ padding: "30px 0" }}>
+      {item ? <ItemDetail item={item} /> : null}
     </div>
   );
 };
