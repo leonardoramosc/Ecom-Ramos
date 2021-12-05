@@ -6,6 +6,10 @@ export const CartProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
 
   const addNewItem = (newItem, quantity) => {
+    if (!quantity) {
+      return;
+    };
+    
     const cartItem = getCartItem(newItem.id);
 
     // si el producto no esta en el carrito, agregrarlo
@@ -20,7 +24,7 @@ export const CartProvider = (props) => {
     // solo si la cantidad total NO excede el stock
     const totalQuantity = cartItem.quantity + quantity;
 
-    if (totalQuantity < cartItem.stock) {
+    if (totalQuantity <= cartItem.stock) {
       cartItem.quantity = totalQuantity;
     }
   };

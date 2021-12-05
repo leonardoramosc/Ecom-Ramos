@@ -1,17 +1,19 @@
 import numeral from "numeral";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
 import { cartContext } from "../../cartContext";
 import ItemCount from "../itemCount/itemCount";
 import "./itemDetail.css";
 
 const ItemDetail = ({ item }) => {
-
-  const {cartItems, addNewItem} = useContext(cartContext);
-  const [quantity, setQuantity] = useState(1);
+  const { cartItems, addNewItem } = useContext(cartContext);
+  const [quantity, setQuantity] = useState(0);
+  const [itemInCart, setItemInCart] = useState(false);
 
   const addToCart = () => {
     addNewItem(item, quantity);
+    setItemInCart(true);
     console.log(cartItems);
   };
 
@@ -25,7 +27,7 @@ const ItemDetail = ({ item }) => {
     display: item.discountPercentage > 0 ? "block" : "none",
   };
 
-  const onItemQuantityChange = (newItemCount) => {
+  const handleAddItem = (newItemCount) => {
     setQuantity(newItemCount);
   };
 
@@ -65,8 +67,19 @@ const ItemDetail = ({ item }) => {
             </p>
             {item.stock > 0 && (
               <div className="item-info__stock--buy">
-                <ItemCount stock={item.stock} onCountChange={onItemQuantityChange} />
-                <button className="item-detail__buy" onClick={addToCart}>Agregar al carrito</button>
+                <ItemCount
+                  stock={item.stock}
+                  onAdd={handleAddItem}
+                  initialCount={quantity}
+                />
+                <button disabled={!quantity} className="item-detail__add-to-cart" onClick={addToCart}>
+                  Agregar al carrito
+                </button>
+                {quantity > 0 && itemInCart && (
+                  <Link to="/cart" className="item-detail__buy">
+                    Termina tu compra
+                  </Link>
+                )}
               </div>
             )}
           </div>
