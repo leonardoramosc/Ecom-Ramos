@@ -3,25 +3,25 @@ import AddIcon from "./add.svg";
 import SubtractIcon from './subtract.svg';
 import { useState } from "react";
 
-const ItemCount = ({ stock }) => {
+const ItemCount = ({ stock, onCountChange }) => {
   const MINIMUM_QUANTITY = 1;
   const [count, setCount] = useState(MINIMUM_QUANTITY);
 
   const increment = () => {
     if (count < stock) {
-      setCount(count + 1);
+      const newCount = count + 1;
+      setCount(newCount);
+      onCountChange(newCount);
     }
   };
 
   const decrement = () => {
     if (count > MINIMUM_QUANTITY) {
-      setCount(count - 1);
+      const newCount = count - 1;
+      setCount(newCount);
+      onCountChange(newCount);
     }
   };
-
-  const addToCart = () => {
-    console.log(`AGREGAR AL CARRITO LA CANTIDAD DE ${count} ITEMS`);
-  }
 
   return (
     <div className="item-count-wrapper">
@@ -38,7 +38,7 @@ const ItemCount = ({ stock }) => {
           />
         </button>
       </div>
-      <button className="add-cart-btn" onClick={addToCart}>Agregar al carrito</button>
+      {/* <button className="add-cart-btn" onClick={addToCart}>Agregar al carrito</button> */}
     </div>
   );
 };

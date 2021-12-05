@@ -1,8 +1,20 @@
 import numeral from "numeral";
+import { useContext } from "react";
+import { useState } from "react/cjs/react.development";
+import { cartContext } from "../../cartContext";
 import ItemCount from "../itemCount/itemCount";
 import "./itemDetail.css";
 
 const ItemDetail = ({ item }) => {
+
+  const {cartItems, addNewItem} = useContext(cartContext);
+  const [quantity, setQuantity] = useState(1);
+
+  const addToCart = () => {
+    addNewItem(item, quantity);
+    console.log(cartItems);
+  };
+
   const calcPriceWithDiscount = (item) => {
     const discountAmount = (item.discountPercentage * item.price) / 100;
     const priceWithDiscount = item.price - discountAmount;
@@ -11,6 +23,10 @@ const ItemDetail = ({ item }) => {
 
   const withDiscountPercentageStyle = {
     display: item.discountPercentage > 0 ? "block" : "none",
+  };
+
+  const onItemQuantityChange = (newItemCount) => {
+    setQuantity(newItemCount);
   };
 
   return (
@@ -48,8 +64,9 @@ const ItemDetail = ({ item }) => {
               }`}
             </p>
             {item.stock > 0 && (
-              <div className="item-info__stock--addtocart">
-                <ItemCount stock={item.stock} />
+              <div className="item-info__stock--buy">
+                <ItemCount stock={item.stock} onCountChange={onItemQuantityChange} />
+                <button className="item-detail__buy" onClick={addToCart}>Agregar al carrito</button>
               </div>
             )}
           </div>
