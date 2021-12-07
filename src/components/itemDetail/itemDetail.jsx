@@ -3,31 +3,25 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
 import { cartContext } from "../../cartContext";
+import { calcPriceWithDiscount } from "../../helpers/products.api";
 import ItemCount from "../itemCount/itemCount";
 import "./itemDetail.css";
 
 const ItemDetail = ({ item }) => {
-  const { cartItems, addNewItem } = useContext(cartContext);
+  const { addNewItem } = useContext(cartContext);
   const [quantity, setQuantity] = useState(0);
   const [itemInCart, setItemInCart] = useState(false);
 
   const addToCart = () => {
     addNewItem(item, quantity);
     setItemInCart(true);
-    console.log(cartItems);
-  };
-
-  const calcPriceWithDiscount = (item) => {
-    const discountAmount = (item.discountPercentage * item.price) / 100;
-    const priceWithDiscount = item.price - discountAmount;
-    return numeral(priceWithDiscount).format("0,0.00");
   };
 
   const withDiscountPercentageStyle = {
     display: item.discountPercentage > 0 ? "block" : "none",
   };
 
-  const handleAddItem = (newItemCount) => {
+  const handleItemCountChange = (newItemCount) => {
     setQuantity(newItemCount);
   };
 
@@ -50,7 +44,7 @@ const ItemDetail = ({ item }) => {
               {numeral(item.price).format("$0,0.00")}
             </p>
             <h2 className="item-info__price--with-discount">
-              $ {calcPriceWithDiscount(item)}
+              $ {numeral(calcPriceWithDiscount(item)).format("0,0.00")}
               <span
                 className="item-info__price--discount"
                 style={withDiscountPercentageStyle}
@@ -69,7 +63,8 @@ const ItemDetail = ({ item }) => {
               <div className="item-info__stock--buy">
                 <ItemCount
                   stock={item.stock}
-                  onAdd={handleAddItem}
+                  onAdd={handleItemCountChange}
+                  onRemove={handleItemCountChange}
                   initialCount={quantity}
                 />
                 <button disabled={!quantity} className="item-detail__add-to-cart" onClick={addToCart}>

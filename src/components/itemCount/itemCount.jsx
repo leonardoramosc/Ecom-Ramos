@@ -3,7 +3,7 @@ import AddIcon from "./add.svg";
 import SubtractIcon from './subtract.svg';
 import { useState } from "react";
 
-const ItemCount = ({ stock, onAdd, initialCount }) => {
+const ItemCount = ({ stock, onAdd, onRemove, initialCount }) => {
   const MINIMUM_QUANTITY = initialCount || 0;
   const [count, setCount] = useState(MINIMUM_QUANTITY);
 
@@ -16,9 +16,10 @@ const ItemCount = ({ stock, onAdd, initialCount }) => {
   };
 
   const decrement = () => {
-    if (count > MINIMUM_QUANTITY) {
+    if (count > 0) {
       const newCount = count - 1;
       setCount(newCount);
+      onRemove(newCount);
     }
   };
 
