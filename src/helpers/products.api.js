@@ -1,3 +1,4 @@
+import numeral from "numeral";
 import mockApiCall from "./mockApiCall"
 import products from "./products";
 
@@ -24,3 +25,14 @@ export const getProductsByCategory = (category) => {
 
   return mockApiCall(productsByCategory, 2000);
 }
+
+export const calcPriceWithDiscount = (item) => {
+  if (item.discountPercentage) {
+    const discountAmount = (item.discountPercentage * item.price) / 100;
+    const priceWithDiscount = item.price - discountAmount;
+    const result = Math.round(priceWithDiscount * 100) / 100;
+    return result;
+  }
+
+  return item.price;
+};

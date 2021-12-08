@@ -1,3 +1,14 @@
-.shopping-cart {
-  height: 40px;
+.cart-widget {
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+
+.cart-widget__quantity {
+  position: absolute;
+  top: -12px;
+  left: -2px;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
 }

@@ -1,0 +1,38 @@
+.cart-item-wrapper {
+  padding: 30px;
+  border-bottom: 2px solid #ddd;
+}
+
+.cart-item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-item-details {
+  display: flex;
+  align-items: center;
+  max-width: 250px;
+}
+
+.cart-item-image {
+  height: 100px;
+  margin-right: 20px;
+}
+
+.cart-item-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #444;
+}
+
+.delete-item-btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.delete-item-btn img {
+  height: 30px;
+  width: 30px;
+}

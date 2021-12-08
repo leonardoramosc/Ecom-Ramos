@@ -3,7 +3,7 @@ const mockApiCall = (mockData, delay) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(mockData);
-      }, delay);
+      }, 0);
     });
   };
 };

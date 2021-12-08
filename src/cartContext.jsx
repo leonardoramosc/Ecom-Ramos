@@ -17,11 +17,11 @@ export const CartProvider = (props) => {
 
     // si el producto no esta en el carrito, agregrarlo
     if (!cartItem) {
-      const temp = cartItems;
-      temp.items.push({ item: newItem, quantity });
-      temp.total += (calcPriceWithDiscount(newItem) * quantity);
-      setCartItems(temp);
-      return;
+      const temp = {...cartItems};
+      const itemTotal = calcPriceWithDiscount(newItem) * quantity;
+      temp.items.push({ item: newItem, quantity, total: itemTotal });
+      temp.total += itemTotal;
+      return setCartItems(temp);
     }
 
     // Si el producto ya esta en el carrito, aumentar la cantidad
@@ -31,6 +31,7 @@ export const CartProvider = (props) => {
     if (totalQuantity <= cartItem.item.stock) {
       const total = cartItems.total + calcPriceWithDiscount(cartItem.item);
       cartItem.quantity = totalQuantity;
+      cartItem.total += calcPriceWithDiscount(cartItem.item);
       const newState = {
         ...cartItems,
         total,
@@ -45,19 +46,48 @@ export const CartProvider = (props) => {
 
   const removeItem = (id) => {
     let targetItem;
+
     const newItems = cartItems.items.filter((cartItem) => {
       if (cartItem.item.id !== id) {
-        targetItem = cartItem;
         return true;
       }
+      targetItem = cartItem;
       return false;
     });
-    setCartItems({
+
+    const newState = {
       ...cartItems,
       items: newItems,
-      total: cartItems.total - targetItem.item.price,
-    });
+    }
+
+    if(targetItem.quantity) {
+      const total = cartItems.total - calcPriceWithDiscount(targetItem.item);
+      newState.total = total;
+      return setCartItems(newState);
+    }
+
+    setCartItems(newState);
   };
+
+  const subtractItem = (id) => {
+    // encontrar el item con ese id
+    const cartItem = getCartItem(id);
+
+    if (!cartItem) return;
+
+    // cambiar el total y la cantidad de ese item
+    const currentPrice = calcPriceWithDiscount(cartItem.item);
+    const cartTotal = Math.round((cartItems.total - currentPrice) * 100) / 100;
+    const itemTotal = Math.round((cartItem.total - currentPrice) * 100) / 100;
+    cartItem.total = itemTotal;
+    cartItem.quantity -= 1;
+
+    // Cambiar el total del carrito
+    setCartItems({
+      ...cartItems,
+      total: cartTotal
+    });
+  }
 
   const clearCartItems = () => {
     setCartItems({ total: 0, items: [] });
@@ -65,7 +95,7 @@ export const CartProvider = (props) => {
 
   return (
     <cartContext.Provider
-      value={{ cartItems, addNewItem, removeItem, clearCartItems }}
+      value={{ cartItems, addNewItem, removeItem, subtractItem, clearCartItems }}
     >
       {props.children}
     </cartContext.Provider>
