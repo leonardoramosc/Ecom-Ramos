@@ -1,32 +1,35 @@
-import { collection, getDocs } from "@firebase/firestore/lite";
+import { collection, getDocs, query, where } from "@firebase/firestore";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router";
 import ItemList from "../components/item-list/itemList";
 import { db } from "../firebase/firebase";
-import { getProducts, getProductsByCategory } from "../helpers/products.api";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const { id: category } = useParams();
 
-  // useEffect(() => {
-  //   const productsCol = collection(db, "productos");
-  //   getDocs(productsCol).then(productList => {
-  //     const products = productList.docs.map(doc => doc.data());
-  //     console.log(products);
-  //   })
-  // }, []);
-
   useEffect(() => {
     if (category) {
-      return getProductsByCategory(category)().then(data => {
-        setProducts(data);
-      })
+      const q = query(
+        collection(db, "products"),
+        where("category", "==", category)
+      );
+      getDocs(q).then((querySnapshot) => {
+        const result = querySnapshot.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+        });
+        setProducts(result);
+      });
+      return;
     }
 
-    getProducts().then((data) => {
-      setProducts(data);
+    const productsCol = collection(db, "products");
+    getDocs(productsCol).then((productList) => {
+      const products = productList.docs.map((doc) => {
+        return { ...doc.data(), id: doc.id };
+      });
+      setProducts(products);
     });
   }, [category]);
 

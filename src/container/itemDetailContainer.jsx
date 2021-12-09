@@ -1,15 +1,21 @@
+import { getDoc, doc } from "@firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import ItemDetail from "../components/itemDetail/itemDetail";
-import { getProductById } from "../helpers/products.api";
+import { db } from "../firebase/firebase";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState(null);
   const { idProducto } = useParams();
 
   useEffect(() => {
-    getProductById(+idProducto)().then((product) => {
-      setItem(product);
+    const docRef = doc(db, "products", idProducto);
+    getDoc(docRef).then(docSnap => {
+      if (docSnap.exists()) {
+        setItem(docSnap.data());
+      } else {
+        console.log("No such document!");
+      }
     });
   }, [idProducto]);
 

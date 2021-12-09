@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { calcPriceWithDiscount } from "./helpers/products.api";
+import { calcPriceWithDiscount } from "./helpers/utils";
 
 export const cartContext = createContext();
 

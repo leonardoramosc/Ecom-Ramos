@@ -1,9 +1,9 @@
 import numeral from "numeral";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import { cartContext } from "../../cartContext";
-import { calcPriceWithDiscount } from "../../helpers/products.api";
+import { calcPriceWithDiscount } from "../../helpers/utils";
 import ItemCount from "../itemCount/itemCount";
 import "./itemDetail.css";
 
