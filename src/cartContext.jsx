@@ -19,7 +19,14 @@ export const CartProvider = (props) => {
     if (!cartItem) {
       const temp = {...cartItems};
       const itemTotal = calcPriceWithDiscount(newItem) * quantity;
-      temp.items.push({ item: newItem, quantity, total: itemTotal });
+      const item = { 
+        ...newItem,
+        get price() {
+          return calcPriceWithDiscount(newItem);
+        }
+      };
+
+      temp.items.push({ item, quantity, total: itemTotal });
       temp.total += itemTotal;
       return setCartItems(temp);
     }
@@ -29,9 +36,9 @@ export const CartProvider = (props) => {
     const totalQuantity = cartItem.quantity + quantity;
 
     if (totalQuantity <= cartItem.item.stock) {
-      const total = cartItems.total + calcPriceWithDiscount(cartItem.item);
+      const total = cartItems.total + cartItem.item.price;
       cartItem.quantity = totalQuantity;
-      cartItem.total += calcPriceWithDiscount(cartItem.item);
+      cartItem.total += cartItem.item.price;
       const newState = {
         ...cartItems,
         total,
@@ -61,7 +68,7 @@ export const CartProvider = (props) => {
     }
 
     if(targetItem.quantity) {
-      const total = cartItems.total - calcPriceWithDiscount(targetItem.item);
+      const total = cartItems.total - targetItem.item.price;
       newState.total = total;
       return setCartItems(newState);
     }
@@ -76,7 +83,7 @@ export const CartProvider = (props) => {
     if (!cartItem) return;
 
     // cambiar el total y la cantidad de ese item
-    const currentPrice = calcPriceWithDiscount(cartItem.item);
+    const currentPrice = cartItem.item.price;
     const cartTotal = Math.round((cartItems.total - currentPrice) * 100) / 100;
     const itemTotal = Math.round((cartItem.total - currentPrice) * 100) / 100;
     cartItem.total = itemTotal;
