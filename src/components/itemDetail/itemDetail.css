@@ -183,6 +183,7 @@
 
   .item-detail {
     flex-direction: column;
+    margin-bottom: 0px;
   }
 
   .item-info {
@@ -201,6 +202,20 @@
   .item-info__stock--buy {
     position: relative;
     bottom: unset;
+  }
+
+  .item-detail__description {
+    padding: 15px;
+  }
+
+  .item-detail__description--title {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .item-detail__description--text {
+    font-size: 18px;
+    line-height: 24px;
   }
 }
 
