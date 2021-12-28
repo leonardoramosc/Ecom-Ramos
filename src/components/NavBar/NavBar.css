@@ -2,7 +2,7 @@
   color: #76c893;
 }
 
-.brand-link {
+.brand-link, .brand-link a, .brand-link:hover {
   text-decoration: none;
   color: #fff;
 }
@@ -28,6 +28,7 @@
   border-radius: 30px;
   transition: background-color 200ms ease-in;
   text-decoration: none;
+  color: #fff;
 }
 
 .navbar__categories--item a{
@@ -41,10 +42,12 @@
 
 .navbar__categories--item:hover {
   background-color: #76c893;
+  color: #fff;
 }
 
 .active {
   background-color: #76c893;
+  color: #fff;
 }
 
 .navbar__categories--item:not(:last-child) {

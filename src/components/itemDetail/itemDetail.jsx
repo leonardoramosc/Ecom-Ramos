@@ -25,17 +25,30 @@ const ItemDetail = ({ item }) => {
     setQuantity(newItemCount);
   };
 
+  // screen param might be mobile
+  const itemInfoHeader = (screen) => {
+    let mainClassName = 'item-info__header';
+    if (screen === 'mobile') {
+      mainClassName = 'item-info__header--mobile';
+    }
+
+    return (
+      <div className={mainClassName}>
+        <p className="item-info__header-sold">{item.sold} vendidos</p>
+        <h1 className="item-info__header-title">{item.title}</h1>
+      </div>
+    );
+  };
+
   return (
     <div className="item-detail-wrapper">
       <div className="item-detail">
+        {itemInfoHeader('mobile')}
         <div className="item-image">
           <img height="320" src={item.img} alt="" />
         </div>
         <div className="item-info">
-          <div className="item-info__header">
-            <p className="item-info__header-sold">{item.sold} vendidos</p>
-            <h1 className="item-info__header-title">{item.title}</h1>
-          </div>
+          {itemInfoHeader()}
           <div className="item-info__price">
             <p
               style={withDiscountPercentageStyle}
@@ -67,7 +80,11 @@ const ItemDetail = ({ item }) => {
                   onRemove={handleItemCountChange}
                   initialCount={quantity}
                 />
-                <button disabled={!quantity} className="item-detail__add-to-cart" onClick={addToCart}>
+                <button
+                  disabled={!quantity}
+                  className="item-detail__add-to-cart"
+                  onClick={addToCart}
+                >
                   Agregar al carrito
                 </button>
                 {quantity > 0 && itemInCart && (

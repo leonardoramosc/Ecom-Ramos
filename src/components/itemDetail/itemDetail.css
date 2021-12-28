@@ -3,6 +3,7 @@
   border-radius: 5px;
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
   width: 80%;
+  max-width: 1024px;
   margin: 30px auto;
   padding: 15px;
 }
@@ -11,6 +12,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
+  max-width: 768px;
 }
 
 .item-image {
@@ -27,6 +29,10 @@
 
 .item-info__header {
   max-width: 250px;
+}
+
+.item-info__header--mobile {
+  display: none;
 }
 
 .item-info__header-sold {
@@ -141,4 +147,69 @@
 
 .item-detail__buy:active {
   background-color: rgba(255, 120, 1);
+}
+
+/*
+*  MEDIA QUERIES
+*/
+
+@media only screen and (min-width: 420px) {
+  .item-detail-wrapper {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .item-detail {
+    margin: 0 auto 30px auto;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+
+  .item-detail-wrapper {
+    width: 100%;
+  }
+
+  .item-image {
+    padding: 0;
+  }
+
+  .item-image img {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .item-detail {
+    flex-direction: column;
+  }
+
+  .item-info {
+    width: 100%;
+    border: none;
+  }
+
+  .item-info__header {
+    display: none;
+  }
+
+  .item-info__header--mobile {
+    display: block;
+  }
+
+  .item-info__stock--buy {
+    position: relative;
+    bottom: unset;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .item-info__price--with-discount {
+    font-size: 22px;
+  }
+
+  .item-info__stock {
+    font-size: 14px;
+  }
 }

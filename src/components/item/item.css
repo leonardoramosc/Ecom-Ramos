@@ -15,7 +15,7 @@
   opacity: 1;
 }
 
-.item-link, .item-link:active, .item-link:visited {
+.item-link, .item-link:active, .item-link:visited, .item-link:hover {
   text-decoration: none;
   color: unset;
 }

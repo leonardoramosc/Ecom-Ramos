@@ -12,7 +12,7 @@ const ItemDetailContainer = () => {
     const docRef = doc(db, "products", idProducto);
     getDoc(docRef).then(docSnap => {
       if (docSnap.exists()) {
-        setItem(docSnap.data());
+        setItem({id: docSnap.id, ...docSnap.data()});
       } else {
         console.log("No such document!");
       }

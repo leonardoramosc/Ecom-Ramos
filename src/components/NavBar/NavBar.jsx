@@ -1,41 +1,52 @@
+import { Navbar, Container, Nav } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./NavBar.css";
-
 import CartWidget from "../cartWidget/cartWidget";
 import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
-
   return (
-    <nav className="navbar">
-      <Link to="/" className="brand-link">
-        <h3 className="brand">
-          Every<span>Market</span>
-        </h3>
-      </Link>
-      <ul className="navbar__categories">
-        <li className="navbar__categories--item">
-          <NavLink to="/category/celulares">
-            Celulares
-          </NavLink>
-        </li>
-        <li className="navbar__categories--item">
-          <NavLink to="/category/computacion">
-            Computación
-          </NavLink>
-        </li>
-        <li className="navbar__categories--item">
-          <NavLink to="/category/televisores">
-            Televisores
-          </NavLink>
-        </li>
-        <li className="navbar__categories--item">
-          <NavLink to="/category/videojuegos">
-            Consolas y Videojuegos
-          </NavLink>
-        </li>
-      </ul>
-      <CartWidget />
-    </nav>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand className="brand">
+          <Link to="/" className="brand-link">
+            Every<span>Market</span>
+          </Link>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="m-auto">
+            <NavLink
+              className="navbar__categories--item"
+              to="/category/celulares"
+            >
+              Celulares
+            </NavLink>
+            <NavLink
+              className="navbar__categories--item"
+              to="/category/computacion"
+            >
+              Computación
+            </NavLink>
+            <NavLink
+              className="navbar__categories--item"
+              to="/category/televisores"
+            >
+              Televisores
+            </NavLink>
+            <NavLink
+              className="navbar__categories--item"
+              to="/category/videojuegos"
+            >
+              Videojuegos
+            </NavLink>
+          </Nav>
+          <Nav>
+            <CartWidget />
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
