@@ -45,7 +45,7 @@ const ItemDetail = ({ item }) => {
       <div className="item-detail">
         {itemInfoHeader('mobile')}
         <div className="item-image">
-          <img height="320" src={item.img} alt="" />
+          <img src={item.img} alt="" />
         </div>
         <div className="item-info">
           {itemInfoHeader()}

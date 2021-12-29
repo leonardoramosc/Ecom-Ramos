@@ -3,8 +3,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./NavBar.css";
 import CartWidget from "../cartWidget/cartWidget";
 import { Link, NavLink } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { cartContext } from "../../cartContext";
 
 const NavBar = () => {
+  const [cartItemstotal, setCartItemsTotal] = useState(0);
+
+  const { cartItems } = useContext(cartContext);
+
+  useEffect(() => {
+    let temp = 0;
+    cartItems.items.forEach((i) => (temp += i.quantity));
+
+    setCartItemsTotal(temp);
+  }, [cartItems]);
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -16,6 +29,16 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="m-auto">
+
+            {cartItemstotal > 0 && (
+              <NavLink
+                className="navbar__categories--item cart__mobile"
+                to="/cart"
+              >
+                {`Carrito de compras (${cartItemstotal})`}
+              </NavLink>
+            )}
+
             <NavLink
               className="navbar__categories--item"
               to="/category/celulares"
@@ -41,11 +64,14 @@ const NavBar = () => {
               Videojuegos
             </NavLink>
           </Nav>
-          <Nav>
+          {/* <Nav>
             <CartWidget />
-          </Nav>
+          </Nav> */}
         </Navbar.Collapse>
       </Container>
+      <Link to="/cart" className="cart__link">
+        <CartWidget />
+      </Link>
     </Navbar>
   );
 };

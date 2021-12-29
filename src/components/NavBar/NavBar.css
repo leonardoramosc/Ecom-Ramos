@@ -1,8 +1,10 @@
-.brand span{
+.brand span {
   color: #76c893;
 }
 
-.brand-link, .brand-link a, .brand-link:hover {
+.brand-link,
+.brand-link a,
+.brand-link:hover {
   text-decoration: none;
   color: #fff;
 }
@@ -31,7 +33,7 @@
   color: #fff;
 }
 
-.navbar__categories--item a{
+.navbar__categories--item a {
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 30px;
@@ -52,4 +54,23 @@
 
 .navbar__categories--item:not(:last-child) {
   margin-right: 10px;
+}
+
+.cart__link {
+  position: relative;
+  right: 5%;
+}
+
+.cart__mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 991px) {
+  .cart__link {
+    display: none;
+  }
+
+  .cart__mobile {
+    display: block;
+  }
 }

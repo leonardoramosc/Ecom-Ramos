@@ -15,6 +15,27 @@
   padding: 30px;
   border-bottom: 2px solid #ddd;
   font-weight: 300;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-header button {
+  border: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 200ms ease-out;
+  text-decoration: none;
+  text-align: center;
+  background-color: rgba(255, 120, 0, 0.8);
+}
+
+.cart-header button:active {
+  background-color: rgba(255, 120, 1);
 }
 
 .cart-header h2 {
@@ -55,4 +76,18 @@
 
 .back-btn:hover {
   color: rgb(0, 219, 77);
+}
+
+@media only screen and (max-width: 768px) {
+  .cart-wrapper {
+    width: 100%;
+  }
+
+  .cart-item-content {
+    position: relative;
+  }
+
+  /* .cart-item-content {
+    flex-direction: column;
+  } */
 }

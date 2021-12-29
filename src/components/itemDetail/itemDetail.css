@@ -19,6 +19,13 @@
   padding: 30px;
 }
 
+.item-image img {
+  min-height: 300px;
+  max-height: 300px;
+  max-width: 350px;
+  object-fit: contain;
+}
+
 .item-info {
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -165,10 +172,10 @@
   }
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 830px) {
 
   .item-detail-wrapper {
-    width: 100%;
+    width: 80%;
   }
 
   .item-image {
@@ -226,5 +233,18 @@
 
   .item-info__stock {
     font-size: 14px;
+  }
+
+  .item-image img {
+    min-height: 150px;
+    max-height: 150px;
+    object-fit: contain;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+
+  .item-detail-wrapper {
+    width: 100%;
   }
 }

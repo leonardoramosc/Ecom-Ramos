@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
 import shoppingCart from './shopping-cart.svg';
 import './cartWidget.css';
 import { cartContext } from '../../cartContext';
@@ -18,12 +17,12 @@ const CartWidget = () => {
   
 
   return (
-    <Link to="/cart" className="cart-widget__wrapper">
+    <span className="cart-widget__wrapper">
       <span style={{opacity: total > 0 ? '1' : '0'}} className="cart-widget">
         <span className="cart-widget__quantity">{total}</span>
         <img src={shoppingCart} alt="shopping cart logo" height="30" />
       </span>
-    </Link>
+    </span>
   );
 }
 
