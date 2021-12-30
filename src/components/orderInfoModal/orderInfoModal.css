@@ -1,0 +1,11 @@
+.modal-title {
+  color: #76c893;
+}
+
+.order-id {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  margin-left: 3px;
+  font-size: 18px;
+  letter-spacing: 2px;
+}

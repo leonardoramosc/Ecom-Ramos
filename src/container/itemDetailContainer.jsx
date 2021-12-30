@@ -8,6 +8,7 @@ import { db } from "../firebase/firebase";
 const ItemDetailContainer = () => {
   const [item, setItem] = useState(null);
   const [showSpinner, setShowSpinner] = useState(false);
+  const [noProduct, setNoProduct] = useState(false);
   const { idProducto } = useParams();
 
   useEffect(() => {
@@ -17,7 +18,7 @@ const ItemDetailContainer = () => {
       if (docSnap.exists()) {
         setItem({id: docSnap.id, ...docSnap.data()});
       } else {
-        console.log("No such document!");
+        setNoProduct(true);
       }
     }).finally(() => {
       setShowSpinner(false);
@@ -28,6 +29,7 @@ const ItemDetailContainer = () => {
     <div style={{ padding: "30px 0" }}>
       {showSpinner && <CustomSpinner />}
       {item ? <ItemDetail item={item} /> : null}
+      {noProduct && <h2 className="ps-5">Lo sentimos, No pudimos encontrar tu producto.</h2>}
     </div>
   );
 };
