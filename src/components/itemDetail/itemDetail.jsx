@@ -6,6 +6,7 @@ import { cartContext } from "../../cartContext";
 import { calcPriceWithDiscount } from "../../helpers/utils";
 import ItemCount from "../itemCount/itemCount";
 import "./itemDetail.css";
+import { Carousel } from "react-bootstrap";
 
 const ItemDetail = ({ item }) => {
   const { addNewItem } = useContext(cartContext);
@@ -27,9 +28,9 @@ const ItemDetail = ({ item }) => {
 
   // screen param might be mobile
   const itemInfoHeader = (screen) => {
-    let mainClassName = 'item-info__header';
-    if (screen === 'mobile') {
-      mainClassName = 'item-info__header--mobile';
+    let mainClassName = "item-info__header";
+    if (screen === "mobile") {
+      mainClassName = "item-info__header--mobile";
     }
 
     return (
@@ -43,10 +44,28 @@ const ItemDetail = ({ item }) => {
   return (
     <div className="item-detail-wrapper">
       <div className="item-detail">
-        {itemInfoHeader('mobile')}
+        {itemInfoHeader("mobile")}
         <div className="item-image">
-          <img src={item.img} alt="" />
+          {/* <img className="item-image__img" src={item.images[1]} alt="" /> */}
+          <Carousel variant="dark">
+            <Carousel.Item >
+              <img className="item-image__img" src={item.img} alt="Imagen número 1" />
+            </Carousel.Item>
+            {item?.images?.length > 0 &&
+              item.images.map((itemImg, index) => {
+                return (
+                  <Carousel.Item key={index}>
+                    <img
+                      className="item-image__img"
+                      src={itemImg}
+                      alt={`Imagen número ${index+2}`}
+                    />
+                  </Carousel.Item>
+                );
+              })}
+          </Carousel>
         </div>
+
         <div className="item-info">
           {itemInfoHeader()}
           <div className="item-info__price">
