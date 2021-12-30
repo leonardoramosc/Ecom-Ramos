@@ -1,5 +1,5 @@
-# EveryMarket
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9301f30b-76f7-4254-a7d6-98b2c0e48b54/deploy-status)](https://app.netlify.com/sites/frosty-roentgen-961eee/deploys)
+# EveryMarket [![Netlify Status](https://api.netlify.com/api/v1/badges/9301f30b-76f7-4254-a7d6-98b2c0e48b54/deploy-status)](https://app.netlify.com/sites/frosty-roentgen-961eee/deploys)
+
  **Ingresa a la app:** https://frosty-roentgen-961eee.netlify.app/item/JuL7BwbqFGTv0YdAkxmz
 ## Aplicación para venta de productos electrónicos 
 EveryMarket es una aplicación que está construida con ReactJs (generada con create-react-app) en el frontend y Firebase como base de datos. El objetivo es que los usuarios puedan comprar productos electrónicos. Nuestros productos están dividos en las siguientes categorías:
